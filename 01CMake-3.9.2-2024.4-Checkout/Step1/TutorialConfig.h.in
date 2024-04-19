@@ -1,0 +1,4 @@
+#define Tutorial_VERSION_MAJOR ${Tutorial_VERSION_MAJOR}
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+//字符串类型的变量 手动添加双引号
+#define STR_TEST  "Hello World!"
