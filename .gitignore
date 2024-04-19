@@ -112,6 +112,11 @@ fabric.properties
 *.out
 *.app
 
+# 排除build文件夹内容
+**/build/
+**/.vs/
+**/out/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -143,5 +148,8 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+_deps
+
+
 
 
