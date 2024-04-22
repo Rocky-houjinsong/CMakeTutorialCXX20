@@ -1,0 +1,56 @@
+name: CXX20 BaseCMake Use MSBuild CI/ID             # Workflow file for windows  PC端的 工作流 
+
+
+env:
+  CTEST_NO_TESTS_ACTION: error
+  CTEST_PARALLEL_LEVEL: 4
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
+
+on:                                             # 触发条件
+  push:
+    branches:
+      - master
+    paths:
+      - "**.c"
+      - "**.cpp"
+      - "**.h"
+      - "**/CMakeLists.txt"
+      - "**.cmake"
+      - "**.md"
+      - ".github/workflows/ci.yml"
+  pull_request: {"master"}
+
+
+
+
+
+jobs:
+
+  core:
+
+    strategy:
+      matrix:
+        os: [windows-latest,ubuntu-latest, macos-latest]
+        shared: [true,false,false]      #启用 Win 平台 编译
+
+    runs-on: ${{ matrx.os }}
+
+    steps:
+    - name: Checkout      # 检查
+      uses: actions/checkout@v4
+      with:
+          submodules: recursive
+
+    - name: cofig shared = ${{ matrix.shared }}
+      run: >-
+          cmake
+          -Bbuild
+          -DBuild_SHARED_LIBS = ${{ matrix.shared }}
+
+    - name: build 
+      run: cmake --build build
+
+    - name: test
+      run: ctest --test-dir build -V  
+    
