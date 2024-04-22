@@ -3,9 +3,9 @@ name: CI
 # https://www.blurredcode.com/2021/05/4756a873/
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 jobs:
   job:
     name: ${{ matrix.os }}-build
