@@ -18,7 +18,7 @@ on:                                             # 触发条件
       - "**/CMakeLists.txt"
       - "**.cmake"
       - "**.md"
-      - ".github/workflows/ci.yml"
+      - ".github/workflows/publish-ci.yml"
   pull_request: {"master"}
 
 
@@ -34,7 +34,7 @@ jobs:
         os: [windows-latest,ubuntu-latest, macos-latest]
         shared: [true,false,false]      #启用 Win 平台 编译
 
-    runs-on: ${{ matrx.os }}
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout      # 检查
