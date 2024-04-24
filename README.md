@@ -41,3 +41,16 @@ tool ??
 
 ```
 
+# 待办清单
+
+
+
+1. 参考 B站 双生 ** 的 CMake 教学 和 C++项目 ,以及  
+   https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/chapters/basics/example.html,以及 GitHub上面的 优秀的  范例 
+2. 学习  B站 的Up主的 模块化 划分,方便 组织 
+3. 学习 C++20 的编写, 
+4. 首要推进的项目是   数据结构 和算法, 设计模式  等基础的技能,  多去参考 GitHub上已有  优秀的代码文件,  学习之后, 尝试编写 新的库 
+5. 下半年 进入状态后, 尝试 编写小Demo ; 
+6. 整理 出 yaml 的编写 教程, 拓展 出  Mac , Linux, Windows 三个平台的 代码编译版本;  提供 更多的 可能性 
+7. CMake   尝试 编写 自己的自动化测试 算法库, 边界测试 
+8. 对  边缘计算 和  底层的 进行学习 

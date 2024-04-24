@@ -6,12 +6,12 @@
 # You should always specify a range with the newest
 # and oldest tested versions of CMake. This will ensure
 # you pick up the best policies.
-cmake_minimum_required(VERSION 3.1...3.21)
+cmake_minimum_required(VERSION 3.1...3.28)
 
 # This is your project statement. You should always list languages;
 # Listing the version is nice here since it sets lots of useful variables
 project(
-  ModernCMakeExample
+  ModernCMakeCXX20
   VERSION 1.0
   LANGUAGES CXX)
 
@@ -26,12 +26,12 @@ project(
 # Other common choices are STATIC, SHARED, and MODULE
 # Including header files here helps IDEs but is not required.
 # Output libname matches target name, with the usual extensions on your system
-add_library(MyLibExample ./src/simple_lib.cpp ./src/simple_lib.hpp)
+add_library(MyLibExample ./src/LibExample001/simple_lib.cpp; ./src/LibExample001/simple_lib.hpp)
 
 # Link each target with other targets or add options, etc.
 
 # Adding something we can run - Output name matches target name
-add_executable(MyExample ./src/simple_example.cpp)
+add_executable(MyExample src/LibExample001/simple_example.cpp)
 
 # Make sure you link your targets with this command. It can also link libraries and
 # even flags, so linking a target that does not exist will not give a configure-time error.
