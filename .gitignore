@@ -1,5 +1,37 @@
 # User ================================
 # 用户自定义的其他忽略文件
+# 在项目开始就创建.gitignore文件的习惯，否则一单push，处理起来会非常麻烦
+
+
+
+
+
+
+
+
+
+
+
+
+#================================
+
+# 指定要将哪些文件添加到版本管理中
+#[[ .md Markdown文件, 多为 教程笔记]]
+
+!*.zip
+!*.md    
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Clion ================================
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
