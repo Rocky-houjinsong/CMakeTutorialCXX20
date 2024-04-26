@@ -23,7 +23,7 @@ jobs:
       VCPKG_ROOT: '${{ github.workspace }}/vcpkg'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
@@ -32,7 +32,7 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Restore vcpkg and its artifacts.
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: vcpkg-cache
         with:
           # The first path is where vcpkg generates artifacts while consuming the vcpkg.json manifest file.
@@ -81,7 +81,7 @@ jobs:
         run: rm -rf "$VCPKG_INSTALLATION_ROOT"
         shell: bash
 
-      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: ilammy/msvc-dev-cmd@v2
         if: runner.os == 'Windows'
         with:
           arch: x64
@@ -103,7 +103,8 @@ jobs:
           if not exist "build" (
               mkdir build
           )
-        shell: cmd 
+          #使用 PowerShell 作为终端
+        shell: pwsh 
       - name: Running cmake
         run: |
           cd ${{ github.workspace }}
