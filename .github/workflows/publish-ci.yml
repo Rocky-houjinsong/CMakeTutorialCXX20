@@ -98,7 +98,7 @@ jobs:
           fi
         shell: bash
       - name: Check if build directory exists  (Windows) 
-        if: unner.os == 'Windows'
+        if: runner.os == 'Windows'
         run: |
           if not exist "build" (
               mkdir build
