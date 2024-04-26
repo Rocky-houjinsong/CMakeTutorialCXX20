@@ -1,23 +1,21 @@
-# CMake simple example
+#[[顶级CMakeList.txt文件]]
 
-## [main]
 
-# Almost all CMake files should start with this
-# You should always specify a range with the newest
-# and oldest tested versions of CMake. This will ensure
-# you pick up the best policies.
-# 该命令为 开头第一个命令,必须在 project()之前  建立版本和策略设置非常重要。
+#[[ Almost all CMake files should start with this.
+ You should always specify a range with the newest
+ and oldest tested versions of CMake. This will ensure
+ you pick up the best policies.
+ 该命令为 开头第一个命令,必须在 project()之前  建立版本和策略设置非常重要。 
 
-# cmake_minimum_required(VERSION <min>[...<policy_max>] [FATAL_ERROR])
+ cmake_minimum_required(VERSION <min>[...<policy_max>] [FATAL_ERROR]) ]]
 cmake_minimum_required(VERSION 3.1...3.28)
 
-# This is your project statement. You should always list languages;
-# Listing the version is nice here since it sets lots of useful variables
-# 定义工程名称，并可指定工程的版本、工程描述、web主页地址、支持的语言（默认情况支持所有语言）
-
-#项目名称 存储到 CMAKE_PROJECT_NAME 中 
-#项目版本信息 存储到  CMAKE_PROJECT_VERSION 中 
-#项目描述 存储到 CMAKE_PROJECT_DESCRIPTION 中
+#[[This is your project statement. You should always list languages;
+ Listing the version is nice here since it sets lots of useful variables
+ 定义工程名称，并可指定工程的版本、工程描述、web主页地址、支持的语言默认情况支持所有语言
+ 项目名称 存储到 CMAKE_PROJECT_NAME 中 
+ 项目版本信息 存储到  CMAKE_PROJECT_VERSION 中 
+ 项目描述 存储到 CMAKE_PROJECT_DESCRIPTION 中]]
 project(
   ModernCMakeCXX20
   VERSION 1.0.12
@@ -25,16 +23,17 @@ project(
   HOMEPAGE_URL "https://github.com/Rocky-houjinsong/CMakeTutorialCXX20"
   LANGUAGES CXX)
 
-
-# Set 变量 
-# SET 指令的语法是：
-# [] 中的参数为可选项, 如不需要可以不写
-# SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])
-
-# 方式2: 各个源文件之间使用分号 ; 间隔
-# 如果在 Project中指定 语言,例如C++ 单纯的 C 是否可使用? 
-# 查看 CMAKE_CXX_STANDARD
+#[[启用编译 链接 相关 设置]]
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+Set(CMAKE_BUILD_TYPE debug)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+
+
+#[[打印输出相关变量]]
+include(CMakePrintHelpers)     # 内置的模组 CMakePrintHelpoers
+cmake_print_variables(CMAKE_CXX_FLAGS)
+
 set(SRC_ARITHMETIC ./src/Arithmetic/add.cpp;./src/Arithmetic/div.cpp;./src/Arithmetic/mult.cpp;./src/Arithmetic/sub.cpp)
 #aux_source_directory(${PROJECT_SOURCE_DIR}/   )
 #如果这个路径中的子目录不存在，会自动生成，无需自己手动创建
@@ -135,6 +134,3 @@ message(STATUS "My_Variable = ${My_Variable}")  #打印变量
 message(STATUS "My_Variable = ${PROJECT_SOURCE_DIR}")  #打印变量
 message(STATUS "My_Variable = ${CMAKE_SOURCE_DIR}")  #打印变量
 
-# 方法二  
-include(CMakePrintHelpers)     # 内置的模组 CMakePrintHelpoers
-cmake_print_variables(My_Variable)

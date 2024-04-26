@@ -61,3 +61,13 @@
 
 # CMake教程
 
+在 linux 平台下使用 CMake 生成 Makefile 并编译的流程如下：
+
+1. 写 CMake 配置文件 CMakeLists.txt 。
+2. 执行命令 `cmake PATH` 或者 `ccmake PATH` 生成 Makefile（`ccmake` 和 `cmake` 的区别在于前者提供了一个交互式的界面）。其中， `PATH` 是 CMakeLists.txt 所在的目录。
+3. 使用 `make` 命令进行编译。
+
+
+
+双生  
+
