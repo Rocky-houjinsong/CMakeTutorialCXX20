@@ -89,17 +89,10 @@ jobs:
       #        uses: mxschmitt/action-tmate@v3
       #        if: runner.os == 'Linux'
 
-      - name: Check if build directory exists  (Linux)   # 检测 build文件是否存在 ,Liunx环境环境问题
+      - name: Check if build directory exists(Linux)    # 检测 build文件是否存在 ,Liunx环境环境问题
         if: ${{ runner.os == 'Linux' && ! -d "build" }}
         run: |
               mkdir build
-              
-       - name: Check if build directory exists (windows)   # 检测 build文件是否存在 ,Liunx环境环境问题
-        if: ${{ runner.os == 'Windows' }}
-        run: |
-              if not exist "build"(
-                mkdir build
-              )   
 
       - name: Running cmake
         run: |
