@@ -67,10 +67,56 @@ target_link_libraries(MyExample PRIVATE MyLibExample)
 
 ## [main]
 
-# This part is so the Modern CMake book can verify this example builds. For your code,
-# you'll probably want tests too
-enable_testing()
-add_test(NAME MyExample COMMAND MyExample)
+
+
+
+#===================================使用 CMake 下载项目=======================
+#=================================== 方法一: 在构建时 (build time) 下载  , 一般走  git的 submodule 
+
+#[[GIt子模组 添加 ,对 用户环境Git检测]]
+find_package(Git QUIET)    #CMake 自带的 FindGit.cmake 检测是否安装了 Git
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git") # Update submodules as needed option(GIT_SUBMODULE "Check submodules during build" ON) 
+	if(GIT_SUBMODULE) 
+		message(STATUS "Submodule update") 
+		execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} RESULT_VARIABLE GIT_SUBMOD_RESULT) 
+		if(NOT GIT_SUBMOD_RESULT EQUAL "0") 
+			message(FATAL_ERROR "git submodule update --init --recursive failed with ${GIT_SUBMOD_RESULT}, please checkout submodules") 
+		endif() 
+	endif() 
+endif() 
+
+if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/submodule/googletest/googletest/CMakeLists.txt")   # 路径需要正确  CMake都会检查仓库是否已经被拉取到本地
+	message(FATAL_ERROR "The submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.") 
+endif()
+## 子模组 子路径  
+# 缺点: 若 前置拉取失败 ,则add_subdirectory 不能对一个尚不存在的文件夹使用
+# 解决: 必须自己构建自己（这个外部项目）来解决这个问题
+#因为导入 该文件路径在测试时需要, 直接转移到是否启用测试中去 
+#add_subdirectory(extern/submodule/googletest/googletest)  
+#=================================== 方法二: 在配置时 (configure time) 下载
+# 提供了插件式（不需要改变你原有的 CMakeLists.txt）的解决方案
+# 自动下载在没有网络访问的环境下也是难以实现的，并且外部项目经常被下载到构建目录中，如果你有多个构建目录，这就既浪费时间又浪费空间。
+# 参考  https://github.com/Crascit/DownloadProject
+
+#=================================测试模块 ============================
+set(GTEST_ROOT ${PROJECT_SOURCE_DIR}/extern/submodule/googletest/googletest)
+message(STATUS  "GTEST_ROOT = ${GTEST_ROOT}")
+option(PACKAGE_TESTS "Build the tests" ON)
+if(PACKAGE_TESTS)
+    enable_testing()
+	# 相同的 路径 不能导入两次,否则会报错 ,例如 针对googletest子模块存在验证添加 和 测试模块添加都导入同一个路径 重复导入报错
+	add_subdirectory(${GTEST_ROOT})
+	include_directories(${GTEST_ROOT}/include)
+endif()
+
+# 代码是可选的，它可以让你的 CACHE 更干净
+mark_as_advanced(
+    BUILD_GMOCK BUILD_GTEST BUILD_SHARED_LIBS
+    gmock_build_tests gtest_build_samples gtest_build_tests
+    gtest_disable_pthreads gtest_force_shared_crt gtest_hide_internal_symbols
+)
+
+
 
 
 #====================================CMake 基础知识=============================================
@@ -80,3 +126,15 @@ add_test(NAME MyExample COMMAND MyExample)
 # 行注释 
 ]]
 
+# 01------------打印变量 
+
+# 方法一 
+
+set(My_Variable 100)   # 声明变量
+message(STATUS "My_Variable = ${My_Variable}")  #打印变量
+message(STATUS "My_Variable = ${PROJECT_SOURCE_DIR}")  #打印变量
+message(STATUS "My_Variable = ${CMAKE_SOURCE_DIR}")  #打印变量
+
+# 方法二  
+include(CMakePrintHelpers)     # 内置的模组 CMakePrintHelpoers
+cmake_print_variables(My_Variable)

@@ -47,6 +47,12 @@
 *  由于可执行程序是基于 cmake 命令生成的 makefile 文件然后再执行 make 命令得到的，所以如果此处指定可执行程序生成路径的时候使用的是相对路径 ./xxx/xxx，那么这个路径中的 ./ 对应的就是 makefile 文件所在的那个目录
 
 *  搜索文件
+   
+*   重复导入路径 报错 -->  googletest  git子模块验证存在后 添加  和   启用 test功能添加 都是同一个路径 重复添加 报错  
+   
+*  
+   
+*  
    *  CMake 中使用aux_source_directory 命令可以查找某个路径下的所有源文件，命令格式为  aux_source_directory(< dir > < variable >)
 
 
