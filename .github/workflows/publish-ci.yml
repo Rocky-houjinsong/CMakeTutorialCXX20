@@ -103,7 +103,7 @@ jobs:
           if not exist "build" (
               mkdir build
           )
-
+        shell: cmd 
       - name: Running cmake
         run: |
           cd ${{ github.workspace }}
