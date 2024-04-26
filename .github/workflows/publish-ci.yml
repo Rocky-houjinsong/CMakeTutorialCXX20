@@ -92,11 +92,11 @@ jobs:
       - name: Check if build directory exists(Linux)    # 检测 build文件是否存在 ,Liunx环境环境问题
         if: runner.os == 'Linux'
         run: |
-            if [ ! -d "build" ]; then
-              mkdir build
-            fi
+          if [ ! -d "build" ]; then
+            mkdir build
+          fi
         shell: bash
-       - name: Check if build directory exists  (Windows) 
+      - name: Check if build directory exists  (Windows) 
         if: unner.os == 'Windows'
         run: |
           if not exist "build" (
