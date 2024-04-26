@@ -90,7 +90,7 @@ jobs:
       #        if: runner.os == 'Linux'
 
       - name: Check if build directory exists(Linux)    # 检测 build文件是否存在 ,Liunx环境环境问题
-        if: ${{ runner.os == 'Linux' && ! -d "build" }}
+        if: ${{ runner.os == 'Linux' && !-d "build" }}
         run: |
               mkdir build
 
