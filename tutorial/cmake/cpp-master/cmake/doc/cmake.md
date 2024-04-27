@@ -82,9 +82,15 @@ cmake --version
 
 2、tutorial代码：https://cmake.org/cmake/help/latest/_downloads/987664e19bf1c78e58910f17f64df29f/cmake-3.26.4-tutorial-source.zip
 
-&nbsp;
 
-&nbsp;
+
+### 文本编辑器Sublime
+
+> 个人推荐  不借助 IDE (例如 Visual Studio) 的智能提示 ,独自编写 ,更有效率 和 状态 
+>
+> ,在  官方没有维护CMake语法高亮之前的临时方案  [Sublime中CMake 语法高亮包](https://github.com/zyxar/Sublime-CMakeLists)
+>
+> &nbsp;&nbsp;
 
 # CMake Tutorial
 
@@ -153,12 +159,33 @@ add_executable(Tutorial tutorial.cxx)
 
 ```shell
 # 用法
-cmake -G <生成器名称> <CMakeLists.txt所在的目录>
+cmake -G <生成器名称> <顶级根CMakeLists.txt所在的目录>
+cmake -G "MinGW Makefiles" ..   #在build文件夹内,其上一级路径就是 CMakeLists.txt
+
+#Linux 删除文件夹  内内容操作  
+rm -rf * 
+#Windows 删除文件夹 内容操作 
+ri * -r -force
 ```
 
 如果使用默认生成器，则-G这部分可以省略，具体支持哪些生成器可以用cmake --help查看
 
-> 扩展：设置环境变量CMAKE_GENERATOR可以指定默认生成器，简化cmake命令的执行
+> 扩展：设置环境变量CMAKE_GENERATOR可以==指定默认生成器==，简化cmake命令的执行
+>
+> ```
+> # Windows 环境变量  
+> CMAKE_GENERATOR  MinGW Makefiles
+> ```
+>
+> 使用  MinGW Makefiles  生成器 生成 出 makefile文件 ,直接指令 
+>
+> ```shell
+> make   #  仅 针对 makefile
+> # 更为通用跨平台的 操作是 
+> cmake --build .   # .表示当前文件夹
+> ```
+>
+> 
 
 &nbsp;
 
@@ -173,6 +200,10 @@ cmake -G <生成器名称> <CMakeLists.txt所在的目录>
 &nbsp;
 
 ### 练习2 指定C++标准
+
+> 此时 进入 多文件编译 阶段 , 使用IDE进行 编辑, 推荐使用VSCode   
+>
+> 安装CMake   C++扩展  进行语法高亮显示
 
 **`CMakeLists.txt`**
 
@@ -266,6 +297,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 &nbsp;
 
 ### 练习3 添加版本号和配置头文件
+
+
+
+>  CMakeLists.txt  与 C++ 文件间的 数据传递 
+
+>  之前 说  每次都走 `cmake ..`  进行生成 . 但是 如果 是二次修改`CMakeLists.txt` 文件, 且  当前文件夹 是存在`cmakecache` 文件的 , 则 可以使用` cmake .` 来重新生成,此时是借助缓存文件进行加载 ,更快速 
 
 有些时候需要让源代码能访问CMakeLIsts.txt当中的数据，比如说在CMakeLists.txt中定义版本号之后，希望能在源程序中对版本号进行输出。本节内容为如何让源代码中能访问CMakeLists.txt中的变量数据。
 
@@ -371,6 +408,15 @@ target_include_directories(Tutorial PUBLIC ${PROJECT_BINARY_DIR})
 ④<mark><PROJECT-NAME>_VERSION_MINOR</mark>
 
 版本号第二个组成部分。该变量为cmake自动定义的一个变量，不需要手动定义，值来自于project的定义。其中<PROJECT-NAME>为用**project**定义的项目名。
+
+
+
+> 学到的是什么 ?  
+>
+> 借助 .in 配置文件, 借助 configure_file ,以及 set 生成 .h头文件,  将  cmakeList中声明的变量   引入到 源文件中    
+> 是 源文件 访问到  CMakeList 中的 变量 
+>
+> 需注意的是 字符串宏定义 需再次添加  双引号 
 
 &nbsp;
 

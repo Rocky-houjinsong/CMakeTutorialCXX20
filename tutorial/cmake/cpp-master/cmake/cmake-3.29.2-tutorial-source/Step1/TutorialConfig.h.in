@@ -1,2 +1,10 @@
 // the configured options and settings for Tutorial
 // TODO 10: Define Tutorial_VERSION_MAJOR and Tutorial_VERSION_MINOR
+// the configured options and settings for Tutorial
+// 两种不同的 编写方式 
+// 格式  配置文件变量名    CMakeLists.txt中文件变量名 
+#define CMakeTutorialStep1_VERSION_MAJOR ${CMakeTutorialStep1_VERSION_MAJOR}
+#define CMakeTutorialStep1_VERSION_MINOR @CMakeTutorialStep1_VERSION_MINOR@
+
+#define STR_TEST  "${STR_TEST}"    //引入 CMakeLists中声明 设置的变量  但这里 类似宏定义,  需要 手动添加 双引号
+
