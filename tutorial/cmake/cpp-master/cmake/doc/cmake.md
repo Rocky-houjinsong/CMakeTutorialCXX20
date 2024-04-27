@@ -438,7 +438,28 @@ target_include_directories(Tutorial PUBLIC ${PROJECT_BINARY_DIR})
 
 ### 练习1 创建库文件
 
+
+
+```c++
+// 原本代码 是 使用std 内置的 求平方根的 库函数, 
+// 现在转为 自己建立一个 库 , 使用 自定义库 来完成 求平方根 
+// Replace sqrt with mathfunctions::sqrt
+```
+
 前面的练习当中创建了可执行文件。本节将学习如何创建库文件以及库文件的使用 。同时也将练习将一个项目划分为多个子目录的方法。
+
+> :one:
+>
+> ```shell
+> mkdir build 
+> cd build 
+> cmake ..
+> cmake --build . 
+> # 模拟 Step1 中的环境, 便于进行本次 训练 
+> ```
+>
+> :two: 
+> 
 
 `CMakeLists.txt`
 
