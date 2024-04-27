@@ -71,3 +71,27 @@
 
 双生  
 
+--------------------
+
+
+
+# 课程参考 
+
+> [【公开课】现代CMake模块化项目管理指南【C/C++】](https://www.bilibili.com/video/BV1V84y117YU/)
+>
+> [【cmake教程】手把手教你利用ctest写一个最简单的测试](https://www.bilibili.com/video/BV1814y1p7Lt/)
+>
+> [从零创建一个c/c++工程-cmake优化](https://www.bilibili.com/video/BV1Zj411r7ys/)
+>
+> [【公开课】现代CMake高级教程（持续更新中](https://www.bilibili.com/video/BV16P4y1g7MH/)
+>
+> [【文档向】CMake基础知识](https://www.bilibili.com/video/BV1hz4y1H7YA)
+>
+> [现代C++: CMake简明教程](https://www.bilibili.com/video/BV1xa4y1R7vT)
+
+
+
+## 课程 代码 
+
+> 存放到  `tutorial` 文件夹下面, 自行 练习学习即可 
+
