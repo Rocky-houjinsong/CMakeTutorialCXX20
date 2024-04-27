@@ -100,9 +100,9 @@ jobs:
       - name: Check if build directory exists  (Windows) 
         if: runner.os == 'Windows'
         run: |
-          if not exist "build" (
-              mkdir build
-          )
+          if (!(Test-Path "build")) {
+              New-Item -ItemType Directory -Path "build"
+            }
           #使用 PowerShell 作为终端
         shell: pwsh 
       - name: Running cmake
