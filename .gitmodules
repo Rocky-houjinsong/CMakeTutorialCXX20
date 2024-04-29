@@ -4,3 +4,18 @@
 [submodule "tutorial/CXX20/geek_time_CXXModern/geek_time_cpp"]
 	path = tutorial/CXX20/geek_time_CXXModern/geek_time_cpp
 	url = https://github.com/adah1972/geek_time_cpp
+[submodule "tutorial/algorithm/LeetCodeList/lzl/LeetCode"]
+	path = tutorial/algorithm/LeetCodeList/lzl/LeetCode
+	url = https://github.com/lzl124631x/LeetCode
+[submodule "tutorial/algorithm/LeetCodeList/keineahnung2345/leetcode-cpp-practices"]
+	path = tutorial/algorithm/LeetCodeList/keineahnung2345/leetcode-cpp-practices
+	url = https://github.com/keineahnung2345/leetcode-cpp-practices
+[submodule "tutorial/algorithm/LeetCodeList/ShiYanLou/ShiYanLou"]
+	path = tutorial/algorithm/LeetCodeList/ShiYanLou/ShiYanLou
+	url = https://github.com/Ewenwan/ShiYanLou.git
+[submodule "tutorial/algorithm/LeetCodeList/Play-with-Algorithms/Play-with-Algorithms"]
+	path = tutorial/algorithm/LeetCodeList/Play-with-Algorithms/Play-with-Algorithms
+	url = https://github.com/liuyubobobo/Play-with-Algorithms.git
+[submodule "tutorial/Base/408Family/408CSFamily"]
+	path = tutorial/Base/408Family/408CSFamily
+	url = https://github.com/142vip/408CSFamily
