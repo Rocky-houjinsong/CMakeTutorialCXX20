@@ -7,7 +7,7 @@
 
 参照 文档 食用 更佳  
 
-使用Typora 和 XMind 打开 
+使用Typora 和 XMind 打开 doc文件夹中的教程
 
 
 
