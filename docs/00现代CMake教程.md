@@ -95,3 +95,22 @@
 
 > 存放到  `tutorial` 文件夹下面, 自行 练习学习即可 
 
+
+
+---
+
+开发环境基础要求:
+
+* Linux bash终端
+* CXX20标准 
+
+
+
+```bash
+#CMake 构建过程 详细日志 
+cmake --build . --verbose 
+
+#CMake 构建过程 简单日志 
+cmake --build .
+```
+

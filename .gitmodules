@@ -19,3 +19,9 @@
 [submodule "tutorial/Base/408Family/408CSFamily"]
 	path = tutorial/Base/408Family/408CSFamily
 	url = https://github.com/142vip/408CSFamily
+[submodule "tutorial/CXX20/my-coding-notes"]
+	path = tutorial/CXX20/my-coding-notes
+	url = https://github.com/Serein207/my-coding-notes.git
+[submodule "tutorial/Base/notes"]
+	path = tutorial/Base/notes
+	url = https://github.com/tch0/notes.git
