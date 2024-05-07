@@ -98,6 +98,10 @@ cmake --version
 
 ### 练习1  最简单的CMake项目
 
+
+
+:interrobang:  ==文件路径 必须为ASCII码值== 不可 有中文之类的存在
+
 **`CMakeLists.txt`**
 
 ```cmake
