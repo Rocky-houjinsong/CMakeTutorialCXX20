@@ -179,3 +179,27 @@ $ git clone --recursive <project url>
 
 - 虽然 Git 提供的子模块功能已足够方便好用，但仍请在为主仓库项目添加子模块之前确保这是非常必要的。毕竟有很多编程语言（如 [Go](https://golang.org/)）或其他依赖管理工具（如 Ruby’s [rubygems](http://guides.rubygems.org/), Node.js’ [npm](https://docs.npmjs.com/getting-started/what-is-npm), or Cocoa’s [CocoaPods](https://cocoapods.org/about) and [Carthage](https://github.com/Carthage/Carthage)）可以更好的 handle 类似的功能。
 - 主仓库项目的合作者并不会**自动地**看到子模块仓库的更新通知的。所以，更新子模块后一定要记得提醒一下主仓库项目的合作者 `git submodule update`。
+
+
+
+----
+
+# 查看  仓库信息 
+
+
+
+```shell
+#查看 仓库大小  
+git count-objects -vH
+```
+
+## 仓库过大 , 修改浅克隆下载
+
+```bash
+#修改 缓冲区 大小
+git config --global http.postBuffer 5242880000    
+
+#浅克隆 一层 下载 
+
+```
+
