@@ -25,9 +25,6 @@
 [submodule "tutorial/Base/notes"]
 	path = tutorial/Base/notes
 	url = https://github.com/tch0/notes.git
-[submodule "tutorial/CXX20/Cpp20-STL-Cookbook-src"]
-	path = tutorial/CXX20/Cpp20-STL-Cookbook-src
-	url = https://github.com/Mq-b/Cpp20-STL-Cookbook-src.git
 [submodule "tutorial/algorithm/LeetCodeList/leetcode-master/leetcode-master"]
 	path = tutorial/algorithm/LeetCodeList/leetcode-master/leetcode-master
 	url = https://github.com/youngyangyang04/leetcode-master.git
