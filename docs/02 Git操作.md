@@ -189,13 +189,18 @@ $ git clone --recursive <project url>
 
 ----
 
-# 查看  仓库信息 
+# 仓库瘦身
 
 
 
 ```shell
-#查看 仓库大小  
+# 查看仓库体积情况
 git count-objects -vH
+#将本地 clone 的仓库历史提交过的体积较大的前 5 个文件名与对应的 Object 文件的 ID 罗列出来
+git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')"
+
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+git push --mirror
 ```
 
 ## 仓库过大 , 修改浅克隆下载
@@ -207,4 +212,12 @@ git config --global http.postBuffer 5242880000
 #浅克隆 一层 下载 
 
 ```
+
+
+
+```
+
+```
+
+
 
