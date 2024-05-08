@@ -147,8 +147,13 @@ $ git clone --recursive <project url>
 1. 删除子模块文件夹
 
    ```bash
-   $ git rm --cached GWToolkit
+   $ git rm -r  --cached GWToolkit
    $ rm -rf GWToolkit
+   
+   rocky@rocky MINGW64 /d/Code/MyReposity/CMakeTutorialCXX20 (master)
+   $ git rm --cached ./tutorial/algorithm/LeetCodeList/ShiYanLou/
+   fatal: not removing './tutorial/algorithm/LeetCodeList/ShiYanLou/' recursively without -r
+   
    ```
 
 2. 删除 `.gitmodules` 文件中相关子模块的信息，类似于：
