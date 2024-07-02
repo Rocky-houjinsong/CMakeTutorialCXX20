@@ -221,3 +221,26 @@ git config --global http.postBuffer 5242880000
 
 
 
+
+
+## 开启代理后无法 提交 
+
+
+
+--
+
+尝试重置代理或者取消代理的方式：
+
+```bash
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+如果没效果，接着添加全局代理试试：
+
+```bash
+git config --global http.proxy
+git config --global https.proxy
+```
+
+如果以上问题还未得到解决，可能不是代理的问题，或许是DNS解析，再采用接下来的方法尝试。
